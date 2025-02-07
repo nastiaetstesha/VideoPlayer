@@ -16,7 +16,7 @@
       width: 100%;
     }
 
-    .button {
+    .player-button {
       color: white;
       cursor: pointer;
       border: none;
@@ -37,6 +37,10 @@
     .spacer {
       flex-grow: 1;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
   
   <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
@@ -50,25 +54,25 @@
     <div class="video-container js-video-container"></div>
     
     <div class="controls">
-      <button class="button js-play-button">
+      <button class="player-button js-play-button" onclick="togglePlay()">
         <i class="fa fa-play fa-2x"></i>
       </button>
       
-      <button class="button js-pause-button" hidden>
+      <button class="player-button js-pause-button hidden" onclick="togglePlay()">
         <i class="fa fa-pause fa-2x"></i>
       </button>
       
-      <button class="button js-volume-button">
-        <i class="fa fa-volume-up fa-2x"></i>
+      <button class="player-button js-volume-button" onclick="toggleMute()">
+        <i class="fa fa-volume-off fa-2x"></i>
       </button>
 
-      <button class="button js-mute-button" hidden>
-        <i class="fa fa-volume-off fa-2x"></i>
+      <button class="player-button js-mute-button hidden" onclick="toggleMute()">
+        <i class="fa fa-volume-up fa-2x"></i>
       </button>
       
       <div class="spacer"></div>
       
-      <button class="button js-fullscreen-button">
+      <button class="player-button js-fullscreen-button">
         <i class="fa fa-expand fa-2x"></i>
       </button>
     </div>
@@ -78,6 +82,16 @@
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
   <script src="player.js"></script>
   <script type="text/javascript">
+    function togglePlay() {
+      document.querySelector('.js-play-button').classList.toggle('hidden');
+      document.querySelector('.js-pause-button').classList.toggle('hidden');
+    }
+
+    function toggleMute() {
+      document.querySelector('.js-volume-button').classList.toggle('hidden');
+      document.querySelector('.js-mute-button').classList.toggle('hidden');
+    }
+
     createPlayer({elementId: 'player'});
   </script>
 </body>
