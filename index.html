@@ -6,9 +6,9 @@
       display: flex;
       flex-direction: column;
       background: transparent;
-      box-shadow: 0 0 20px rgba(8, 8, 8, 1.5);
-      width: 800px;
-      height: 600px;
+      box-shadow: 0 0 30px rgba(8, 8, 8, 1.5);
+      width: 400px;
+      height: 300px
     }
 
     .video-container {
@@ -24,14 +24,22 @@
       align-items: center;
       justify-content: center;
       background: transparent;
+      font-size: x-small;
+      margin-left: -1px;
     }
 
     .controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0px;
       background: rgb(4, 4, 4);
-      padding: 10px;
+      /* padding: 0px; */
+      /* margin: 1px; */
+      /* margin-left: 2px; */
+      padding-top: 2px;
+      padding-bottom: 5px;
+      padding-right: 0px;
+      padding-left: 0px;
     }
 
     .spacer {
@@ -55,25 +63,25 @@
     
     <div class="controls">
       <button class="player-button js-play-button" onclick="togglePlay()">
-        <i class="fa fa-play fa-2x"></i>
+        <i class="fa fa-play"></i>
       </button>
       
       <button class="player-button js-pause-button hidden" onclick="togglePlay()">
-        <i class="fa fa-pause fa-2x"></i>
+        <i class="fa fa-pause"></i>
       </button>
       
       <button class="player-button js-volume-button" onclick="toggleMute()">
-        <i class="fa fa-volume-off fa-2x"></i>
+        <i class="fa fa-volume-off"></i>
       </button>
 
       <button class="player-button js-mute-button hidden" onclick="toggleMute()">
-        <i class="fa fa-volume-up fa-2x"></i>
+        <i class="fa fa-volume-up"></i>
       </button>
       
       <div class="spacer"></div>
       
       <button class="player-button js-fullscreen-button">
-        <i class="fa fa-expand fa-2x"></i>
+        <i class="fa fa-expand"></i>
       </button>
     </div>
   </div>
