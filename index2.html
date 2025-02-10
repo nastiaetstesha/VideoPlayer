@@ -45,21 +45,24 @@
 
     .progress-bar {
       flex-grow: 1;
-      height: 4px;
+      height: 3px;
       background: rgba(115, 3, 3, 0.5);
       position: absolute;
-      bottom: 40px;
-      left: 10px;
-      right: 10px;
+      bottom: 9px;
+      left: 70px;
+      right: 50px;
       display: flex;
       align-items: center;
       gap: 0px;
+      border-radius: 10% / 70%;
     }
 
     .progress-slider {
+      display: flex;
+      position: absolute;
       height: 100%;
       background: red;
-      width: 20%; /* Example progress */
+      border-radius: 10% / 70%;
     }
 
     .left-controls {
@@ -82,6 +85,20 @@
     .hidden {
       display: none;
     }
+
+    .dot {
+      height: 3px;
+      width: 3px;
+      background-color: red;
+      border: 1px solid white; /* Белая окантовка */
+      border-radius: 50%;
+      position: absolute;
+      right: 0; /* Всегда справа от полоски */
+      top: 50%;
+      transform: translate(50%, -50%);
+      box-shadow: 0 0 1px white;
+    }
+
   </style>
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <title>Пример подключения плеера</title>
@@ -91,24 +108,40 @@
   <div id="player" class="shadow">
     <div class="video-container js-video-container"></div>
     
-    <!-- <div class="progress-bar">
-      <div class="progress-slider"></div>
-    </div> -->
-
     <div class="controls">
       <div class="left-controls">
         <button class="player-button js-play-button" onclick="togglePlay()">
-          <i class="fa fa-play"></i>
-        </button>
+            <i class="fa fa-play"></i>
+          </button>
+          
+          <button class="player-button js-pause-button hidden" onclick="togglePlay()">
+            <i class="fa fa-pause"></i>
+          </button>
         
-        <button class="player-button js-mute-button" onclick="toggleMute()">
-          <i class="fa fa-volume-off"></i>
-        </button>
+          <button class="player-button js-volume-button" onclick="toggleMute()">
+            <i class="fa fa-volume-off"></i>
+          </button>
+    
+          <button class="player-button js-mute-button hidden" onclick="toggleMute()">
+            <i class="fa fa-volume-up"></i>
+          </button>
         
         <span class="time-display js-current-time"></span>
-        <div class="progress-bar">
-            <div class="progress-slider"></div>
+        
+
+        <!-- <div class="js-progress" style="background-color: grey;">
+            <div class="js-progress-slider" style="background-color: rgb(116, 12, 244);">Прогресс</div>
           </div>
+        </div> -->
+
+        <div class="js-progress progress-bar">
+            
+            <div class="js-progress-slider progress-slider" ></div>
+            <div class="dot"></div>
+            <!-- <span class="dot"></span> -->
+            
+          </div>
+          
       </div>
       
       <div class="right-controls">
