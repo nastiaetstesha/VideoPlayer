@@ -2,17 +2,20 @@
 <html>
 <head>
   <style>
+
+
     #player {
       display: flex;
       flex-direction: column;
       background: transparent;
       box-shadow: 0 0 30px rgba(8, 8, 8, 1.5);
       width: 400px;
-      height: 300px
+      height: 300px;
+      position: relative;
     }
 
     .video-container {
-      flex-grow: 1;
+      flex-grow: 0.94;
       width: 100%;
     }
 
@@ -31,42 +34,79 @@
     .controls {
       display: flex;
       align-items: center;
-      gap: 0px;
-      background: rgb(4, 4, 4);
-      /* padding: 0px; */
-      /* margin: 1px; */
-      /* margin-left: 2px; */
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 1);
       padding-top: 2px;
       padding-bottom: 5px;
       padding-right: 0px;
       padding-left: 0px;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
     }
 
-    .spacer {
+    .progress-bar {
       flex-grow: 1;
+      height: 3px;
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      bottom: 9px;
+      left: 70px;
+      right: 50px;
+      display: flex;
+      align-items: center;
+      gap: 0px;
+      border-radius: 10% / 70%;
     }
 
-    .hidden {
-      display: none;
+    .progress-slider {
+      display: flex;
+      position: absolute;
+      height: 100%;
+      background: red;
+      border-radius: 10% / 70%;
+    }
+
+    .left-controls {
+      display: flex;
+      align-items: center;
+      gap: 0px;
+    }
+
+    .right-controls {
+      display: flex;
+      align-items: center;
+      gap: 0px;
     }
 
     .time-display {
-      color: rgb(242, 234, 234);
-      font-family: 'Roboto Flex', serif;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
+      font-size: 8px;
+      color: white;
     }
 
-    .time-left {
-      text-align: left;
-      margin-right: auto;
+    /* .hidden {
+      display: none;
+    } */
+
+    .dot {
+      height: 4px;
+      width: 4px;
+      background-color: red;
+      border: 1px solid white;
+      border-radius: 50%;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      box-shadow: 0 0 1px white;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
     }
 
-    .time-right {
-      text-align: right;
-      margin-left: 10px;
+    .progress-bar:hover .dot {
+      opacity: 1;
     }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +114,8 @@
   <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
   <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
   <title>Пример подключения плеера</title>
   <meta charset="utf-8">
 </head>
@@ -82,44 +124,43 @@
     <div class="video-container js-video-container"></div>
     
     <div class="controls">
-      <button class="player-button js-play-button" onclick="togglePlay()">
-        <i class="fa fa-play"></i>
-      </button>
-      
-      <button class="player-button js-pause-button hidden" onclick="togglePlay()">
-        <i class="fa fa-pause"></i>
-      </button>
-      
-      <button class="player-button js-volume-button" onclick="toggleMute()">
-        <i class="fa fa-volume-off"></i>
-      </button>
-
-      <button class="player-button js-mute-button hidden" onclick="toggleMute()">
-        <i class="fa fa-volume-up"></i>
-      </button>
-      
-      
-
-
-      <div class="time-display">
-        <span class="time-left js-current-time"></span>
-      <div class="js-progress" style="background-color: rgb(152, 19, 19);">
-        <div class="js-progress-slider" style="background-color: rgb(116, 12, 244);">
+      <div class="left-controls">
+        <button class="player-button js-play-button" onclick="togglePlay()">
+            <i class="fa fa-play"></i>
+          </button>
           
-        <div class="spacer"></div>
+          <button class="player-button js-pause-button hidden" onclick="togglePlay()">
+            <i class="fa fa-pause"></i>
+          </button>
         
-        <span class="time-right js-duration"></span>
-        </div>
+          <button class="player-button js-volume-button" onclick="toggleMute()">
+            <i class="fa fa-volume-off"></i>
+          </button>
+    
+          <button class="player-button js-mute-button hidden" onclick="toggleMute()">
+            <i class="fa fa-volume-up"></i>
+          </button>
+        
+        <span class="time-display js-current-time"></span>
 
+        <div class="js-progress progress-bar">
+            
+            <div class="js-progress-slider progress-slider" >
+                <div class="dot"></div>
+            </div>
+
+            
+          </div>
+          
+      </div>
       
-
-        </div>
-        </div>
-
-      <button class="player-button js-fullscreen-button">
-        <i class="fa fa-expand"></i>
-      </button>
-
+      <div class="right-controls">
+        <span class="time-display js-duration"></span>
+        
+        <button class="player-button js-fullscreen-button">
+          <i class="fa fa-expand"></i>
+        </button>
+      </div>
     </div>
   </div>
 
