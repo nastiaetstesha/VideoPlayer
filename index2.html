@@ -87,16 +87,22 @@
     }
 
     .dot {
-      height: 3px;
-      width: 3px;
+      height: 4px;
+      width: 4px;
       background-color: red;
-      border: 1px solid white; /* Белая окантовка */
+      border: 1px solid white;
       border-radius: 50%;
       position: absolute;
-      right: 0; /* Всегда справа от полоски */
+      right: 0;
       top: 50%;
       transform: translate(50%, -50%);
       box-shadow: 0 0 1px white;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .progress-bar:hover .dot {
+      opacity: 1;
     }
 
   </style>
