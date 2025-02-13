@@ -9,14 +9,17 @@
       flex-direction: column;
       background: transparent;
       box-shadow: 0 0 30px rgba(8, 8, 8, 1.5);
-      width: 400px;
-      height: 300px;
+      width: 800px;
+      height: 600px;
       position: relative;
     }
 
     .video-container {
-      flex-grow: 0.94;
+      flex-grow: 0.95;
       width: 100%;
+      align-items: center;
+      padding-bottom: 10px;
+      background: black;
     }
 
     .player-button {
@@ -27,8 +30,8 @@
       align-items: center;
       justify-content: center;
       background: transparent;
-      font-size: x-small;
-      margin-left: -1px;
+      font-size: large;
+      margin-left: 0px;
     }
 
     .controls {
@@ -36,8 +39,8 @@
       align-items: center;
       justify-content: space-between;
       background: rgba(0, 0, 0, 1);
-      padding-top: 2px;
-      padding-bottom: 5px;
+      padding-top: 4px;
+      padding-bottom: 11px;
       padding-right: 0px;
       padding-left: 0px;
       position: absolute;
@@ -47,12 +50,12 @@
 
     .progress-bar {
       flex-grow: 1;
-      height: 3px;
+      height: 6px;
       background: rgba(0, 0, 0, 0.5);
       position: absolute;
-      bottom: 9px;
-      left: 70px;
-      right: 50px;
+      bottom: 18px;
+      left: 140px;
+      right: 100px;
       display: flex;
       align-items: center;
       gap: 0px;
@@ -70,17 +73,19 @@
     .left-controls {
       display: flex;
       align-items: center;
-      gap: 0px;
+      gap: 8px;
+      padding-left: 5px;
     }
 
     .right-controls {
       display: flex;
       align-items: center;
-      gap: 0px;
+      gap: 8px;
+      padding-right: 5px;
     }
 
     .time-display {
-      font-size: 8px;
+      font-size: 16px;
       color: white;
     }
 
@@ -89,16 +94,16 @@
     } */
 
     .dot {
-      height: 4px;
-      width: 4px;
+      height: 8px;
+      width: 8px;
       background-color: red;
-      border: 1px solid white;
+      border: 2px solid white;
       border-radius: 50%;
       position: absolute;
       right: 0;
       top: 50%;
       transform: translate(50%, -50%);
-      box-shadow: 0 0 1px white;
+      box-shadow: 0 0 2px white;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
